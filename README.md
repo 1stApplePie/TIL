@@ -5,11 +5,14 @@
 * [02_queue](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/02_queue.ipynb)
 * [03_stack](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/03_stack.ipynb)
 * [04_Tree](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/04_Tree.ipynb)
+* [05_Graph](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/05_graph.ipynb)
 ## EDA(Exploratory Data Analysis)
 * [Titanic EDA](https://github.com/1stApplePie/TIL/blob/master/EDA/titanic-eda.ipynb)
 ## DeepLearning
 * [LSTM_practice without import Keras.LSTM](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/LSTM_Practice.ipynb)
 * [IMDB Review](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/IMDBreview.ipynb)
+* [Reuter Review](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/reuters_review.ipynb)
+* [Boston Housing Practice](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/bosonhousing_practice.ipynb)
 ## HTML5 + CSS3 + Javascript
 * [Chapter02_HTML 기본문서](https://github.com/1stApplePie/TIL/tree/master/HTML5%2BCSS3%2BJavascript_Webprogramming/chapter02_HTML%EA%B8%B0%EB%B3%B8%EB%AC%B8%EC%84%9C)
 
