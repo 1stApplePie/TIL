@@ -9,6 +9,7 @@
 * [06_DFS](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/06_DFS.ipynb)
 ## EDA(Exploratory Data Analysis)
 * [Titanic EDA](https://github.com/1stApplePie/TIL/blob/master/EDA/titanic-eda.ipynb)
+* [House Price EDA](https://github.com/1stApplePie/TIL/blob/master/EDA/house-price-eda.ipynb)
 ## DeepLearning
 * [LSTM_practice without import Keras.LSTM](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/LSTM_Practice.ipynb)
 * [IMDB Review](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/IMDBreview.ipynb)
