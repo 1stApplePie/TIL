@@ -17,6 +17,7 @@
 * [Reuter Review](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/reuters_review.ipynb)
 * [Boston Housing Practice](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/bosonhousing_practice.ipynb)
 * [Multi Layer Perceptron XOR](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/Multi_Layer_Perceptron_XOR.ipynb)
+* [Titanic Modeling](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/titanic-modeling.ipynb)
 
 ## HTML5 + CSS3 + Javascript
 * [Chapter02_HTML 기본문서](https://github.com/1stApplePie/TIL/tree/master/HTML5%2BCSS3%2BJavascript_Webprogramming/chapter02_HTML%EA%B8%B0%EB%B3%B8%EB%AC%B8%EC%84%9C)
