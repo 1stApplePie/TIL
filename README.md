@@ -1,12 +1,13 @@
 # TIL
 
-## Data Structure with python
+## Data Structure & Algorithm with python
 * [01_Heap](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/01_heap.ipynb)
 * [02_Queue](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/02_queue.ipynb)
 * [03_Stack](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/03_stack.ipynb)
 * [04_Tree](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/04_Tree.ipynb)
 * [05_Graph](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/05_graph.ipynb)
 * [06_DFS](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/06_DFS.ipynb)
+* [07_BFS](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/07_BFS.ipynb)
 ## EDA(Exploratory Data Analysis)
 * [Titanic EDA](https://github.com/1stApplePie/TIL/blob/master/EDA/titanic-eda.ipynb)
 * [House Price EDA](https://github.com/1stApplePie/TIL/blob/master/EDA/house-price-eda.ipynb)
