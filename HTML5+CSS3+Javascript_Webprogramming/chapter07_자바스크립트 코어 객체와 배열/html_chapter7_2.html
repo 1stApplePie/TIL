@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "urf-8">
+        <title>정수 5개 입력받아 역순으로 출력</title>
+    </head>
+    <body>
+        <h3>정수 5개 입력받아 역순으로 출력</h3>
+        <hr>
+        <script>
+            let arr = [];
+            do{
+                let tmp = prompt("정수를 입력해주세요.");
+                tmp = parseInt(tmp);
+                arr.push(tmp);
+            } while (arr.length < 5);
+
+            document.write("입력된 수의 배열<br>")
+            for(let i=0;i<arr.length;i++){
+                document.write(arr[i] + "&nbsp")
+            }
+            document.write("<hr>")
+            document.write("역순으로 재정렬된 배열<br>")
+            let arr_tmp1 = [];
+            let arr_tmp2 = [];
+
+            for(let i=0; i<arr.length; i++){
+                if(arr[i]<10) arr_tmp1.push(arr[i]);
+                else arr_tmp2.push(arr[i]);
+            }
+
+            arr_tmp1 = arr_tmp1.sort();
+            arr_tmp2 = arr_tmp2.sort();
+            
+            arr_tmp1 = arr_tmp1.reverse();
+            arr_tmp2 = arr_tmp2.reverse();
+            
+            arr = arr_tmp2.concat(arr_tmp1);
+            
+            for(let i=0; i<arr.length; i++){
+                document.write(arr[i] + "&nbsp");
+            }
+
+        </script>
+    </body>
+</html>
+

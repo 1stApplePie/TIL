@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "urf-8">
+        <title>난수</title>
+    </head>
+    <body>
+        <h3>난수 10개 생성</h3>
+        <hr>
+        <script>
+            let n = [];
+            for(let i=0; i<10; i++){
+                rand = Math.floor(Math.random()*100);
+                n[i] = rand;
+            }
+            for(let i=0; i<10; i++){
+                document.write(n[i] + "&nbsp");
+            }
+            document.write("<hr>");
+            let big = n[0];
+            for(let i=0; i<10; i++){
+                if(n[i]>big) big = n[i];
+            }
+            document.write("제일 큰 수는" + big);
+            document.write("<hr>")
+
+            
+            let n_tmp1 = [];
+            let n_tmp2 = [];
+
+            for(let i=0; i<10; i++){
+                if(n[i]<10) n_tmp1.push(n[i]);
+                else n_tmp2.push(n[i]);
+            }
+            n_tmp1 = n_tmp1.sort();
+            n_tmp2 = n_tmp2.sort();
+            
+            n = n_tmp1.concat(n_tmp2);
+            
+            for(let i=0; i<10; i++){
+                document.write(n[i] + "&nbsp");
+            }
+        </script>
+    </body>
+</html>
