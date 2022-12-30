@@ -51,31 +51,7 @@
     </body>
 </html>
 ```
-<br>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset = "utf-8">
-        <title>
-            HTML5 문서 구조 시맨틱 태그 사용
-        </title>
-        <style>
-            html, body {margin: 0; padding: 0; height: 100%;}
-            header {width: 100%; height: 15%; background: yellow;}
-            nav {width: 15%; height: 70%; float: left; background: orange;}
-            section {width: 70%; height: 70%; float: left; background: olivedrab;}
-            aside {width: 15%; height: 70%; float: left; background: plum;}
-            footer {width: 100%; height: 15%; clear: both; background: plum;}
-        </style>
-    </head>
-    <body>
-        <header>header</header>
-        <nav>nav</nav>
-        <section>section</section>
-        <aside>aside</aside>
-        <footer>footer</footer>
-    </body>
-</html>
+
 
 ---
 ## 4. 시맨틱 블록 태그
@@ -104,3 +80,77 @@
 </body>
 </html>
 ```
+* <details\>와 <summary\>
+    * <details\>는 상세 정보를 담는 시맨틱 블록 태그
+    * 핸들을 클릭하여 상세 정보를 감추거나 보이게 할 수 있음
+    * <summary\>태그는 <details\>로 구성되는 블록의 제목을 표현한다.
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+    </head>
+    <body>
+        <h3>details와 summary 태그</h3>
+        Q &amp; A 리스트
+        <hr>
+        <details>
+            <summary>Question 1</summary>
+            <p>웹 개발자가 알아야 하는 언어 3가지?</p>
+        </details>
+        <details>
+            <summary>Answer 1</summary>
+            <p>HTML5, CSS, Javascript</p>
+        </details>
+    </body>
+</html>
+```
+---
+## 5. 시맨틱 인라인 태그
+* <mark\> : 중요한 텍스트임을 표시
+* <time\> : 시간 정보임을 표시
+* <meter\> : 주어진 범위나 %의 데이터 양 표시
+* <progress\> : 작업의 진행 정도 표시
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+    </head>
+    <body>
+        <h3>인라인 태그 사례</h3>
+        <hr>
+        <p>
+            내일 <mark>HTML5 시험</mark><br>
+            시간은 <time>09:00</time><br>
+            난이도 <meter value = "0.8" max = "1.0">80%</meter><br>
+            자료 업로딩(20%) <progress value = "2" max = "10">
+            </progress><br>
+        </p>
+    </body>
+</html>
+```
+---
+## 6. 웹 폼
+* 웹 폼: 웹 페이지를 통해 사용자 입력을 받는 폼
+* <input\>, <textarea\>, <select\> 등 다양한 태그 제공
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset = "utf-8">
+    </head>
+    <body>
+        <h3>로그인 폼</h3>
+        <hr>
+        <form name = "fo" method = "get">
+            사용자 ID: <input type = "text" size = "15" value = ""><br>
+            비밀 번호: <input type = "password" size = "15" value = "">
+            <input type = "submit" value = "완료">
+        </form>
+    </body>
+</html>
+```
+---
+# Reference
+* 명품 HTML5 + CSS + Javascript 웹 프로그래밍 개정판(황기태, (주)생능출판사)
