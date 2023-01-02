@@ -152,5 +152,101 @@
 </html>
 ```
 ---
+## 7. 네이버 검색 사례를 통한 폼 전송 과정의 이해
+www.naver.com 사이트에서 검색되는 과정을 통해 폼의 전송 과정과 action, method 속성에 대해 알아보자.
+
+1. 네이버 사이트에 접속. 검색어를 입력받는 폼의 정보는 다음과 같다.
+```
+<form id="sform" name="sform" action="https://search.naver.com/search.naver" method="get" role="search">
+<input id="query" name="query" type="text" title="검색어 입력" maxlength="255" class="input_text" tabindex="1" accesskey="s" style="ime-mode:active;" autocomplete="off" placeholder="검색어를 입력해 주세요." onclick="document.getElementById('fbm').value=1;" value="" data-atcmp-element="">
+</form>
+```
+* 검색 버튼이 눌려지면 브라우저는 <form\>태그의 action = "https://search.naver.com/search.naver"을 참고하여 search.naver.com 서버에 접속하여 search.naver 응용프로그램의 실행을 요구해야 한다는 것을 확인
+2. 사용자가 입력 창에 Elvis를 입력하고 검색 버튼을 누르면, 브라우저는 웹 서버 응용프로그램에 보낼 다음 폼 데이터를 만든다.
+```
+query=Elvis
+```
+* 여기서 query는 입력 창의 이름 (<input name="quary"\>)에서 가져온 것이다. 폼 데이터는 name=value 형태로 그성된다. <form\>태그의 method 속성이 get이므로, 폼 데이터를 다음과 같이 action의 URL에 덧붙인다.
+3. 이제, 브라우저는 웹 서버인 search.naver.com에 접속, search.naver의 실행 요청, query=Elvis 전달.
+4. 웹 서버에서 search.naver 응용프로그램을 실행하고 검색 결과를 브라우저에게 보냄
+5. 브라우저는 검색 결과를 화면에 출력
+
+## 8. 폼 만들기
+* using (input type="text, password", textarea)
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h3>자기 소개서 작성</h3>
+        <hr>
+        <form>
+            이름 : <input type="text" value=""><br>
+            암호 : <input type="password" value="" maxlength="4"><br>
+            자소서 : <textarea cols="20" rows="5">
+                이곳에 자기소개서 작성
+            </textarea>
+        </form>
+    </body>
+</html>
+```
+
+* using datalist
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h3>가보고 싶은 곳</h3>
+        <hr>
+        <form>
+            나라 : <input type="text" list="countries"><br>
+            <datalist id="countries">
+                <option value = "가나">
+                <option value = "스위스">
+                <option value = "브라질"></option>
+            </datalist>
+            보고싶은것 : <input type="text" list="what"><br>
+            <datalist id="what">
+                <option value="신">
+                <option value="바다">
+                <option value="도시">
+            </datalist>
+        </form>
+    </body>
+</html>
+```
+* 텍스트/이미지 버튼 만들기
+```
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h3>버튼 만들기</h3>
+        <hr>
+        <form>
+            검색 : <input type="text" size="10" value="">
+            <input type="button" value="Q1">
+            <button type="button">Q2</button><br>
+            submit 버튼 : <input type="submit" value="전송1">
+            <button type="submit">전송2</button><br>
+            reset 버튼 : <input type="reset" value="리셋1">
+            <button type="reset">리셋2</button><br>
+            이미지버튼 : <input type="image" src="media/button.png" alt="이미지 버튼">
+            <button type="button">
+                <img src="media/buton.png" alt="이미지 버튼">
+            </button>
+        </form>
+    </body>
+</html>
+```
+<hr>
+
 # Reference
 * 명품 HTML5 + CSS + Javascript 웹 프로그래밍 개정판(황기태, (주)생능출판사)
