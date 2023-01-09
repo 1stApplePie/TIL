@@ -12,13 +12,17 @@
 * [Titanic EDA](https://github.com/1stApplePie/TIL/blob/master/EDA/titanic-eda.ipynb)
 * [House Price EDA](https://github.com/1stApplePie/TIL/blob/master/EDA/house-price-eda.ipynb)
 ## DeepLearning
+
 * [LSTM_practice without import Keras.LSTM](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/LSTM_Practice.ipynb)
-* [IMDB Review](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/IMDBreview.ipynb)
-* [IMDB with Embedding Layer](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/IMDB_with_Embedding_Layer.ipynb)
 * [Reuter Review](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/reuters_review.ipynb)
 * [Boston Housing Practice](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/bosonhousing_practice.ipynb)
 * [Multi Layer Perceptron XOR](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/Multi_Layer_Perceptron_XOR.ipynb)
 * [Titanic Modeling](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/titanic-modeling.ipynb)
+* ### IMDB dataset
+    * [IMDB with Embedding Layer](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/IMDB_with_Embedding_Layer.ipynb)
+    * [IMDB with LSTM Layer](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/IMDB_with_LSTM_Layer.ipynb)
+    * [IMDB Review](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/IMDBreview.ipynb)
+
 
 ## HTML5 + CSS3 + Javascript
 * [HTML 기본문서](https://github.com/1stApplePie/TIL/tree/master/HTML5%2BCSS3%2BJavascript_Webprogramming/chapter02_HTML%EA%B8%B0%EB%B3%B8%EB%AC%B8%EC%84%9C)
@@ -26,12 +30,12 @@
 * [CSS3로 웹 꾸미기](https://github.com/1stApplePie/TIL/blob/master/HTML5%2BCSS3%2BJavascript_Webprogramming/WebDesign_usingCSS3/chapter4.md)
 * [자바스크립트 코어 객체와 배열](https://github.com/1stApplePie/TIL/tree/master/HTML5%2BCSS3%2BJavascript_Webprogramming/chapter07_%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%20%EC%BD%94%EC%96%B4%20%EA%B0%9D%EC%B2%B4%EC%99%80%20%EB%B0%B0%EC%97%B4)
 
-## Web_Crawling
+## Web Crawling
 * [Daum news crawling](https://github.com/1stApplePie/TIL/blob/master/Web_Crawling/daumnews_web_crawling_practice.ipynb)
 * [paxnet crawling](https://github.com/1stApplePie/TIL/blob/master/Web_Crawling/paxnet_web_crawling.ipynb)
 * [OpenDartReader](https://github.com/1stApplePie/TIL/blob/master/Web_Crawling/dividendAnalysis_OpenDartReader.ipynb)
 * [Creon App Crawling](https://github.com/1stApplePie/TIL/tree/master/Web_Crawling/creon_app_crawling)
-## Web_Hacking
+## Web Hacking
 * [What is Hacking?](https://github.com/1stApplePie/TIL/blob/master/Web_Hacking/what-is-hacking.md)
 ## ROS
 * [YDLIDAR_Mapping](https://github.com/1stApplePie/TIL/tree/master/ROS/YDLIDER_Mapping)
