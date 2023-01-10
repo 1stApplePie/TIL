@@ -13,6 +13,7 @@
 * [House Price EDA](https://github.com/1stApplePie/TIL/blob/master/EDA/house-price-eda.ipynb)
 ## DeepLearning
 
+* [Cat & Dog classification](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/cats%26dog_conv.ipynb)
 * [LSTM_practice without import Keras.LSTM](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/LSTM_Practice.ipynb)
 * [Reuter Review](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/reuters_review.ipynb)
 * [Boston Housing Practice](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/bosonhousing_practice.ipynb)
