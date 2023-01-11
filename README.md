@@ -11,7 +11,7 @@
 ## EDA(Exploratory Data Analysis)
 * [Titanic EDA](https://github.com/1stApplePie/TIL/blob/master/EDA/titanic-eda.ipynb)
 * [House Price EDA](https://github.com/1stApplePie/TIL/blob/master/EDA/house-price-eda.ipynb)
-## DeepLearning
+## Deep Learning
 
 * [Cat & Dog classification](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/cats%26dog_conv.ipynb)
 * [LSTM_practice without import Keras.LSTM](https://github.com/1stApplePie/TIL/blob/master/DeepLearning/LSTM_Practice.ipynb)
