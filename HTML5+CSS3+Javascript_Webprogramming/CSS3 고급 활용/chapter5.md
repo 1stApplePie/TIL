@@ -153,3 +153,67 @@ list-style: list-style-type list-style-position list-style-image
     </body>
 </html>
 ```
+# 3. 표 꾸미기
+CSS3 스타일 시트를 활용한 표 꾸미기
+## 표 테두리 제어, border
+border값은 테두리의 두께, 모양, 색을 지정 가능
+```
+table {
+    border: 1px solid blue;
+}
+td, th{
+    border: 1px dotted green;
+}
+```
+<table\>, <td\>, <th\>에 모두 테두리를 주었기 때문에 테두리가 이중으로 나타난다. 이를 하나로 합치려면 border-collapse property에 collapse값을 주면 된다.
+```
+table {
+    border: 1px solid blue;
+    border-collapse: collapse;
+}
+td, th{
+    border: 1px dotted green;
+}
+```
+
+## 셀 크기 제어, width height
+width와 height property를 이용하면 셀의 크기를 지정할 수 있다.
+```
+th{
+    height: 40px;
+    width: 100px;
+}
+td{
+    height: 20px;
+    width: 100px;
+}
+```
+또한 셀의 크기를 %단위로 지정할 수도 있다. 브라우저의 폭에 같은 비율로 출력하고자 할 때 사용한다.
+```
+table{width: 100%;}
+```
+## 셀 여백 및 정렬
+디폴트로 <th\>셀은 중앙 정렬, <td\> 셀은 왼쪽 정렬이다. 하지만 text-align property에 left, right, center 등의 값으로 정렬 방식을 바꿀 수 있다.
+```
+td, th{
+    height: 20px;
+    width: 100px;
+    padding: 10px;
+    text-align: right;
+}
+```
+## 배경색과 테두리 효과
+셀의 배경색은 가독성을 높인다. 배경색은 background, 글자는 color property를 사용한다.
+```
+thread{
+    background: darkgray;
+    color: yellow;
+}
+```
+## 줄무늬 만들기
+배경색과 더불어 줄무늬도 가독성에 영향을 준다.
+```
+tr:nth-child(even){
+    background: aliceblue;
+}
+```
