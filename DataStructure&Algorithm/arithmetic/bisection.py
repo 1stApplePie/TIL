@@ -1,6 +1,6 @@
 from collections.abc import Callable
 
-def bisection(function: Callable[[float], float], a: float, b: float):
+def bisection(function, a: float, b: float):
     start = a
     end = b
 
