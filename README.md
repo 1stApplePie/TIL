@@ -10,6 +10,7 @@
 * [07_BFS](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/07_BFS.ipynb)
 * [Arithmetic Algorithm](https://github.com/1stApplePie/TIL/tree/master/DataStructure%26Algorithm/arithmetic)
     * [bisection](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/arithmetic/bisection.py)
+    * [gaussian elimination](https://github.com/1stApplePie/TIL/blob/master/DataStructure%26Algorithm/arithmetic/gaussian_elimination.py)
 ## EDA(Exploratory Data Analysis)
 * [Titanic EDA](https://github.com/1stApplePie/TIL/blob/master/EDA/titanic-eda.ipynb)
 * [House Price EDA](https://github.com/1stApplePie/TIL/blob/master/EDA/house-price-eda.ipynb)
