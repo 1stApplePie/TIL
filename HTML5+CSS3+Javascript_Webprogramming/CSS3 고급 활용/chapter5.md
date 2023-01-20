@@ -221,5 +221,11 @@ tr:nth-child(even){
 
 # 4. 폼 꾸미기
 
-
+## input[type=text]로 폼 요소에 스타일 입히기
+셀렉터 중에는 속성 값이 일치하는 HTML 태그에만 스타일을 적용하는 속성 셀렉터가 있다. 다음은 type 속성값이 "text"인 <input\>태그에 글자를 red로 출력하는 경우이다.
+```
+input[type=text] {
+	color: red;
+}
+```
 
