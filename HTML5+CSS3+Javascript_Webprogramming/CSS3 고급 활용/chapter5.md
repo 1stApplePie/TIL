@@ -218,20 +218,124 @@ tr:nth-child(even){
 }
 ```
 
-
 # 4. 폼 꾸미기
+많은 웹 사이트들이 고객이나 방문객으로부터 질의를 받는 contact us 페이지를 두고 있다.
+contact us 페이지를 만드는 사례를 통해 폼을 꾸미는 CSS3 스타일을 알아보자.
 
 ## input[type=text]로 폼 요소에 스타일 입히기
-셀렉터 중에는 속성 값이 일치하는 HTML 태그에만 스타일을 적용하는 속성 셀렉터가 있다. 다음은 type 속성값이 "text"인 <input\>태그에 글자를 red로 출력하는 경우이다.
+셀렉터 중에는 속성 값이 일치하는 HTML 태그에만 스타일을 적용하는 속성 셀렉터가 있음. 다음은 type 속성 값이 'text'인 <input\> 태그에 글자를 red로 출력하는 경우이다.
 ```
 input[type=text] {
-	color: red;
+    color: red;
+}
+```
+
+## input[type=text]로 폼 요소의 테두리 만들기
+```
+input[type=text]{
+    border: 2px solid skyblue;
+    border-radius: 5px;
 }
 ```
 
 ## 폼 요소에 마우스 처리
-폼 요소에 마우스가 접근할 때 폼 요소의 모양을 바꾸어 보자.
+폼 요소에 마우스가 접근할 때 폼 요소의 모양을 바꿔보자
+* 마우스가 올라올 때, :hover
+```
+input[type=text]{
+    color: red;
+}
+input[type=text]:hover{
+    background: aliceblue;
+}
+```
 
-1. :hover
-	:hover를 사용하면 마우스가 올라올 때 입력 창의 배경색을 aliceblue로 바꿀 수 있다. 마우스를 내리면 원래 색으로 돌아간다.
+* 입력할 때, :focus
+포커스는 키 입력에 대한 독점권을 뜻함.
+```
+input[type=text]:focus{
+    font-size: 120%;
+}
+```
 
+# 5. CSS3 스타일로 태그에 동적 변화 만들기
+자바스크립트를 사용하지 않고 CSS3 만으로 HTML 태그의 모양에 동적인 변화를 줄 수 있다.
+* 애니메이션(animation)
+* 전환(transition)
+* 변환(transform)
+
+## 애니메이션
+HTML 태그의 모양 변화를 시간 단위로 설정하여 쉽게 애니메이션 효과를 만들 수 있다. 다만 2가지 작업이 필요하다.
+1. 시간별 애니메이션 장면 작성
+```
+@keyframs name{
+    시간비율 {스타일; 스타일;}
+    ...
+    시간비율 {스타일; 스타일;}
+}
+
+@keyframes textColorAnimation {
+    0% {color: blue;}
+    30% {color: green;}
+    100% {color: red;}
+}
+```
+
+2. 애니메이션 스타일 시트 작성
+```
+animation-name: 애니메이션 이름;
+animation-duration: 시간;
+animation-iteration-count: 애니메이션 반복 횟수;
+
+span{
+    animaiton-name: textColorAnimation;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+```
+
+## 전환
+전환이란 HTML 태그에 적용된 CSS3 property 값이 변할 때, 값의 변화를 서서히 진행시켜 애니메이션 효과를 내는 것이며, 1회만 시행한다.
+
+1. 전환 프로퍼티와 전환 시간 지정
+```
+transition: 전환프로퍼티 전환시간
+/* 전환프로퍼티: 이 프로퍼티 값이 변경되면 현재 값에서 새 값으로 전환효과 시작
+전환시간: 현재 값에서 새 값으로 전환하는데 걸리는 시간 */
+
+span{
+    transition: font-size 5s;
+}
+```
+
+2. 전환 효과 시작
+전환 프로퍼티의 값이 변경되면 전환은 자동으로 진행됨.
+전환 프로퍼티의 현재 값에서 바뀐 값까지 전환 시간동안 진행됨.
+```
+span:hover{
+    font-size: 500%;
+}
+```
+위의 코드는 span 태그에 마우스가 올라가면 font-size를 500%로 변경함.
+이전 전환 시간을 5초로 정해두었기에 5초동안 font-size가 500%까지 커지는 애니메이션 효과 생성
+
+## 변환
+CSS3의 변환 기능은 텍스트나 이미지에 회전이나 확대 등 다양한 기하학적 모양을 부여할 수 있음. 또한 마우스를 올릴 때 순간적으로 변환을 일으키는 것 또한 가능
+변환에서 사용하는 회전 각도의 단위는 deg이면 시계방향으로 회전함.
+
+* ## transform property
+CSS3에서 제공하는 변환 함수를 transform property에 적용하면 쉽게 변환 가능
+```
+div{
+    transform: rotate(20deg);
+}
+```
+Reference:  https://developer.mozilla.org/en-US/docs/Web/CSS/transform
+
+* ## 다중 변환
+여러 변환을 동시에 하려면 transform property에 변환 함수들을 나열하면 된다.
+```
+div{
+    transform: rotate(20deg) scale(3, 1);
+}
+```
