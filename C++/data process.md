@@ -74,7 +74,6 @@ sizeof
 // limits.cpp
 #include <iostream>
 #include <climits>  // 구식 C++에는 limits.h를 사용한다.
-
 int main()
 {
     using namespace std;
@@ -82,14 +81,12 @@ int main()
     short n_short = SHRT_MAX;   // limits.h 파일에 정의된 기호 상수
     long n_long = LONG_MAX;
     long long n_llong = LLONG_MAX;
-
     // sizeof 연산자는 데이터형이나 변수의 크기를 알아낸다.
     cout << "int는 " << sizeof (int) << " 바이트이다." << endl;
     cout << "short는 " << sizeof n_short << " 바이트이다." << endl;
     cout << "long는 " << sizeof n_long << " 바이트이다." << endl;
     cout << "long long는 " << sizeof n_llong << " 바이트이다." << endl;
     cout << endl;
-
     cout << "최대값: " << endl;
     cout << "int: " << n_int << endl;
     cout << "short: " << n_short << endl;
@@ -106,13 +103,236 @@ int는 4 바이트이다.
 short는 2 바이트이다.
 long는 4 바이트이다.
 long long는 8 바이트이다.
-
 최대값:
 int: 2147483647
 short: 23767
 long: 2147483647
 long long: 9223372036854775807
-
 int의 최솟값 = -2147483648
 바이트 당 비트 수 = 8
 ```
+
+* ### sizeof 연산자와 climits 헤더 파일
+sizeof 연산자는 우리가 사용한 기본 시스템에서 int형이 4바이트라고 보고한다. sizeof 연산자는 데이터형 이름이나 변수 이름에 모두 사용할 수 있다. int와 같은 데이터형 이름에 sizeof 연산자를 사용할 때에는 괄호를 사용해야 하며, n_short와 같은 변수 이름에 사용할 때에는 괄호가 없어도 상관없다.
+```
+cout << "int는 " << sizeof (int) << " 바이트이다." << endl;
+cout << "short는 " << sizeof n_short << " 바이트이다." << endl;
+```
+climits 헤더 파일은 데이터형의 한계값을 나타내기 위해 기호 상수를 사용한다.
+
+* ### 초기화
+초기화는 선언과 대입을 하나로 조합한다. 예를 들어, 다음과 같은 구문은
+```
+int n_int = INT_MAX;
+```
+n_int 를 int형 변수로 선언하고, 그 변수에 int형의 최대값을 대입한다. 또는 255와 같은 상수를 사용할 수도 있다. 이때 이와 같은 기호 상수가 아닌 일반 상수로도 초기화할 수 있다. 또는 앞에서 정의한 변수로도 초기화할 수 있다. 심지어 프로그램 실행이 그 선언에 접근할 때 수식 안의 값들이 모두 알려진다면, 수식으로도 초기화할 수 있다.
+```
+int uncles = 5;                     // uncles를 5로 초기화
+int aunts = uncles;                 // aunts를 5로 초기화
+int chairs = aunts + uncles + 4;    // chairs를 14로 초기화
+```
+맨 앞의 uncles에 대한 선언을 맨 뒤로 옮기면 나머지 두 개의 초기화는 실패한다. 그 이유는 프로그램이 aunts와 chairs를 초기화하려고 시도할 때 uncles의 값을 아직 알 수 없기 때문이다.  
+  
+앞에서 보여준 초기화 문법은 C언어에서 유래한 것이다. C++는 C와는 다른 새로운 초기화 문법을 가지고 있다.
+```
+int owls = 101; // 전통적인 C스타일의 초기화 문법
+int wrens(432); // C++의 새로운 초기화 문법, wrens를 432로 초기화
+```
+변수가 어떤 초기값을 가져야 하는지 분명히 알고 있다면 반드시 초기화하라. 변수 선언과 값 대입을 분리하면 일시적으로 변수의 값이 미확정 상태가 된다.
+```
+short year;     // 변수 year의 값이 미확정 상태
+year = 1492;    // 변수 year의 값이 1492로 확정된 상태
+```
+변수를 선언할 때 아예 값을 대입하여 초기화까지 하면, 나중에 잊어버리고 변수에 값을 대입하지 않는 실수를 예방할 수 있다.
+
+* ## unsigned 형
+앞에서 설명한 세 가지 기본 정수형은 음의 정수값을 저장할 수 없는 unsigned변형을 하나씩 가지고 있다. unsigned형을 사용하면 그 변수에 저장할 수 있는 최대값을 늘릴 수 있다. 예를 들어 short형이 -32768에서 +32767까지의 범위를 갖는다면, unsigned short는 0부터 65535까지의 범위를 갖는다. 물론 unsigned형은 인구 수, 낱알 수, 웃는 얼굴 표정 수와 같이 결코 음수가 될 수 없는 양을 나타낼 때에만 사용해야 한다. 기본 정수형들의 unsigned형 변수를 선언하려면 unsigned 키워드를 앞에 븥여서 선언하면 된다.
+```
+unsigned short change;      // unsigned short형
+unsigned int rovert;        // unsigned int형
+unsigned quarterback;       // unsigned int형
+unsigned long gone;         // unsigned long형
+unsigned long long lang_lang // unsigned long long형
+```
+Listing 3.2는 unsigned형을 사용하는 방법을 설명한다. 또한 프로그램이 정수형의 범위를 벗어나려고 시도하면 어떤 일이 벌어지는지도 설명한다. 마지막으로 #define 전처리 지시문을 보여 준다.
+```
+// Listing 3.2
+// exceed.cpp
+#include <iostream>
+#define ZERO 0      // 값 0으로 대체될 기호 상수 ZERO를 정의한다.
+#include <climits>  // INT_MAX가 int형의 최대값으로 정의되어 있다.
+int main()
+{
+    using namespace std;
+    short Dohee = SHRT_MAX;     // 변수를 최대값으로 초기화
+    unsigned short Insuk = Dohee;   // Dohee가 정의되어 있으므로 맞다.
+
+    cout << ""도희 계좌에는 " << Dohee << "원이 들어있고, ";
+    cout << "인숙이의 계좌에도 " << Insuk << "원이 들어있다."<< endl;
+    cout << "각각의 계좌에 1원씩 입금한다." << endl << "이제 ";
+    Dohee = Dohee + 1;
+    Insuk = Insuk + 1;
+    cout << "도희 잔고는 " << Dohee << "원이 되었고, ";
+    cout << "인숙이의 잔고는 " << Insuk << "원이 되었다." << endl;
+    cout << "이럴 수가! 도희가 나 몰래 대출을 했나?" << endl;
+    Dohee = ZERO;
+    Insuk = ZERO;
+    cout << "도희 계좌에는 " << Dohee << "원이 들어있고, ";
+    cout << "인숙이의 계좌에도 " << Insuk << "원이 들어있다." << endl;
+    cout << " 각각의 계좌에서 1원씩 인출한다." << endl << "이제";
+    Dohee = Dohee - 1;
+    Insuk = Insuk - 1;
+    cout << "도희 잔고는 " << Dohee << "원이 되었고, ";
+    cout << "인숙이의 잔고는 " << Insuk << "원이 되었다." << endl;
+    cout << "이럴 수가! 인숙이가 복권에 당첨되었나?" << endl;
+    return 0;
+}
+```
+
+이 프로그램은 short형 변수(Dohee)와 unsigned short형 변수(Insuk)를  short형의 최대값인 32767로 설정한다. 그러고 나서 각 변수에 1씩 더한다. 이 경우 Insuk에는 아무 문제도 발생하지 않는다.  
+  
+그 이유는 32767에 1을 더해도 unsigned short형의 최대값인 65535보다 여전히 작기 때문이다. 그러나 short형인 Dohee는 32767에서 -32768로 갑자기 넘어간다. 마찬가지로 Dohee와 Insuk모두 0으로 설정한 후, Dohee에서 1을 빼는 것은 문제가 발생하지 않지만, unsigned short형인 Insuk에서 1을 빼면 0에서 65535로 갑자기 넘어간다. 이러한 동작을 우리는 자동차 미터기에서 흔히 볼 수 있다. 즉, 표현할 수 있는 한계를 벗어나려면 그 표현 범위의 반대편에서부터 다시 시작한다.  
+  
+C++는 표현 한계값을 벗어날 때(오버플로와 언더플로가 발생할 때) 부호 없는 unsigned 정수형의 경우에 한상 이와 같이 동작한다. 부호 있는 signed 정수형의 경우에는 항상 이와 같이 동작한다고 보장할 수 없다. 그러나 현재 대부분의 C++는 이와 같은 방식으로 동작하고 있다.
+
+* ## 어느 정수형을 사용할 것인가?
+일반적으로 int형은 컴퓨터에서 가장 효율적인 크기로 설정된다. 그러므로 어쩔 수 없이 다른 정수형을 사용해야 하는 경우가 아니라면, 가급적이면 int형을 사용해야 한다.  
+  
+다른 정수형들은 왜 사용하는지 살펴보자. 문서에 포함되어 있는 단어 수와 같이 결코 으수가 될 수 없는 수를 나타낼 때에는 부호 없는 unsigned 정수형을 사용한다. 부호 없는 정수형의 사용은 signed값보다 더 큰 값을 나타낼 수 있다.  
+  
+숫자의 크기에 따라서는 short << int << long << long long 의 적절한 사용으로 프로그램의 오작동을 예방할 수 있다.
+
+* ## 정수형 상수
+정수형 상수는 212, 1432와 같이 프로그램에 직접 써 넣는 정수를 말한다. C에서와 마찬가지로, C++에서도 세 가지 방법
+* 일상생활에서 사용하는 10진수
+* 구식 Unix가 사용하던 8진수
+* 하드웨어 전문가가 좋아하는 16진수  
+
+로 정수형 상수를 프로그램에 직접 넣을 수 있다.  
+C++에서는 정수형 상수의 처음 하나의 숫자 또는 처음 두 개의 문자가 진수를 의미한다. 처음 숫자가 1에서 9이면 그 수는 10진수를 나타낸다. 처음 숫자가 0이고 두 번째 숫자가 1에서 7이면 그 수는 8진수를 나타낸다. 따라서 042는 8진 정수형 상수이며, 10진수로 34이다.
+그리고 처음 두 개의 문자가 0x 또는 0X이면 16진수를 나타낸다. Listing 3.3은 세 가지 진법을 어떻게 사용하는지 설명한다.
+```
+// Listing 3.3
+// hexoct1.cpp
+#include <iostream>
+int main()
+{
+    using namespace std;
+    int chest = 42; // 10진 정수형 상수
+    int waist = 0x42;   // 16진 정수형 상수
+    int inseam = 042;   // 8진 정수형 상수
+
+    cout << "가슴 둘레: " << chest << endl;
+    cout << "허리 둘레: " << waist << endl;
+    cout << "인심 길이: " << inseam << endl;
+    return 0;
+}
+```
+정수가 프로그램 안에서 어떤 진법으로 표현되었느냐와는 상관없이 기본적으로 cout은 10진수로 출력한다.  
+  
+어떤 정수값을 16진수나 8진수 형태로 출력하려면 cout의 특별한 기능을 사용해야 한다. iostream 헤더 파일은 새로운 행을 시작하라는 메시지를 cout에 전달하는 endl 조정자를 제공한다. 이와 비슷하게, iostream 헤더 파일은 정수를 10진수, 16진수, 8진수로 각각 디스플레이 하라는 메시지를 cout에 전달하는 dec, hex, oct 조정자를 제공한다. Listing 3.4는 10진수 42를 세 가지 형태로 디스플레이 하기 위해 hex와 oct를 사용한다.
+```
+// Listing 3.4
+// hexoct2.cpp
+#include <iostream>
+using namespace std;
+int main()
+{
+    using namespace std;
+    int chest = 42;
+    int waist = 42;
+    int inseam = 42;
+
+    cout << "가슴 둘레: " << chest << "(10진수)" << endl;
+    cout << hex;    // 진법을 바꾸는 조정자
+    cout << "허리 둘레: " << waist << "(16진수)" << endl;
+    cout << oct;    // 진법을 바꾸는 조정자
+    cout << "인심 길이: " << inseam << "(8진수)" << endl;
+    return 0;
+}
+```
+* ## C++가 상수의 데이터 형을 결정하는 방법
+프로그램에서 선언이 하는 역할은 변수의 데이터형을 C++ 컴파일러에게 알려 주는 것이다. 그렇다면 정수형 상수의 경우에는 어떻게 될까? 다음과 같이 프로그램에서 어떤 정수를 상수로 표현한다고 가정해보자.
+```
+cout << "Year = " << 1453 << endl;
+```
+프로그램은 1453을 int 형을 저장할까, long형으로 저장할까? 아니면 다른 정수형으로 저장할까? C++는 특별한 이유가 없다면 정수형 상수를 모두 int형으로 저장한다. 그러나 특정 데이터형을 의미하는 접미어를 상수에 붙였을 때와, 값이 너무 커서 int형으로 저장할 수 없을 때에는 그렇지 않다.  
+  
+먼저 접미어에 대해 살펴보자. 접미어는 상수의 끝에 붙는 문자로서 그 상수의 데이터형을 나타낸다. 1이나 L은 long형을 의미하고, u나 U는 unsigned int형을 의미한다. ul은 unsigned long을 의미한다.  
+  
+다음은 크기를 살펴보자. C++는 16진 정수나 8진 정수에 적용하는 규칙과는 약간 다른 규칙을 10진 정수에 적용하고 있다. 접미어가 없는 10진 정수는 int, long, long long형 중에서 크기가 가장 작은 것으로 나타낸다. 예를 들면, 16비트 int형과 32비트 long형을 사용하는 시스템에서, 20000은 int형으로, 40000은 long형으로, 30000000000은 longlong형으로 나타낸다. 또한, 접미어가 없는 16진 정수나 8진 정수는 데이터형 중에서 크기가 작은 것으로 나타낸다.
+  
+* ## char형: 문자와 작은 정수
+이제 마지막으로 남은 정수형인 char형에 대해 살펴보자. char형은 이름에서도 알 수 있듯이, 문자와 숫자를 저장하기 위한 것이다. 컴퓨터에서 수를 저장하는 것은 그다지 어려운 일이 아니지만 문자를 저장하는 것은 이와는 다른 문제이다. 프로그래밍 언어들은 문자를 수치 코드로 나타냄으로써 이 문제를 해결하고 있다. 그러므로 char형은 실제로 또 하나의 정수형이다. 컴퓨터 시스템에서 사용하는 문자와 숫자, 구두점과 같은 기본적인 기호들은 모두 char형으로 나타낼 수 있다. 대부분의 컴퓨터 시스템들은 256개보다 적은 개수의 문자들을 지원한다. 이러한 문자들은 1바이트만으로 충분히 나타낼 수 있다. 그러므로 char형 문자들을 처리하는데 사용할 수 있고, short형보다 작은 범위의 정수를 나타내는데 사용할 수도 있다. Listing 3.5를 통해 char형에 대해 알아보자.
+```
+// Listing 3.5
+// chartype.cpp
+#include <iostream>
+int main()
+{
+    using namespace std;
+    char ch;
+
+    cout << "원하는 문자 하나를 입력하시오: " << endl;
+    cin >> ch;
+    cout << "감사합니다. ";
+    cout << "당신이 입력한 문자는 " << ch << "입니다." << endl;
+    return 0;
+}
+```
+여기서 우리가 주목할 것은 입력할 때 문자 M에 해당하는 코드인 77을 입력하지 않고 문자 M자체를 입력한다는 것이다. 출력 또한 77이 아닌 M으로 출력된다.  
+다음 예제는 문자를 화면에 출력하는 cout.put() 함수의 소개이다.
+```
+// Listing 3.6
+// morechar.cpp
+#include <iostream>
+int main()
+{
+    using namespace std;
+    char ch = 'M'   // M에 해당하는 ASCII 코드를 char형 변수 ch에 대입
+    int i = ch;
+    cout << ch << "의 ASCII 코드는" << i << "입니다." << endl;
+
+    cout << " 이 문자 코드에 1을 더해 보겠습니다." << endl;
+    ch = ch + 1;
+    i = ch;
+    cout << ch << "의 ASCII 코드는 " << i << "입니다." << endl;
+
+    // cout.put() 멤버 함수를 사용하여 char형 변수 ch를 출력한다.
+    cout << "cout.put(ch)를 사용하여 char형 변수 ch를 화면에 출력: ";
+    cout.put(ch);
+
+    // cout.put()을 사용하여 문자 상수를 출력한다.
+    cout.put('!');
+
+    cout << endl << "종료" << endl;
+    return 0;
+}
+```
+Listing 3.6 프로그램에서 'M'이라는 표기는 문자 M에 해당하는 수치 코드를 의미한다. 그러므로 char형 변수 ch를 'M'으로 초기화하면 값 77이 ch에 대입된다. 프로그램은 동일한 값을 int형 변수 i에도 대입한다. 따라서 ch와 i에는 동일한 값 77이 저장된다. 그러고 나서 cout은 ch를 M으로 출력하고, i를 77로 출력한다. 이것은 잘 짜여진 객체의 능력을 보여 주는 또 하나의 예이다.
+
+* ### 멤버 함수: cout.put()
+cout.put()은 무엇일까? 그리고 그것의 이름에는 왜 마침표가 들어있을까?  
+cout.put()은 C++ 객체 지향 프로그래밍에서 중요한 개념인 멤버 함수를 설명하는 첫 번째 예이다. 클래스는 데이터 형식과 그 데이터를 다루는 방법을 정의해 놓은 것이라고 앞에서 설명했다. 멤버 함수는 클래스에 속하고, 클래스의 데이털르 다루는 방법을 정의한다. 예를 들어, ostream클래스는 문자를 출력하도록 설계된 put()함수를 가지고 있다.  
+  
+멤버 함수는 그 클래스의 특정 객체를 통해서만 사용할 수 있다. 이 예제에서는 cout객체를 통해 put()이라는 멤버 함수를 사용한다. cout과 같은 객체를 통해 멤버 함수를 사용하려면 마침표로 객체 이름(cout)과 함수 이름(put())을 서로 연결해야 한다. 이 마침표를 멤버 연산자(emebership operator)라고 부른다. cout.put()이 나타내는 의미는 클래스 객체인 cout을 통해 클래스 멤버 함수인 put() 을 사용하겠다는 뜻이다.  
+cout.put()멤버 함수는 << 연산자를 사용하여 문자를 출력하는 것에 대한 대안이다.
+
+* ### ASCII
+ASCII코드에 관해서는 python에서도 공부한 바 있다. 따라서 예제 하나만 보고 넘어가도록 하자.
+```
+// Listing 3.7
+// bondini.cpp
+#include <iostream>
+int main()
+{
+    using namespace std;
+    cout << "\a암호명  \"화려한외출\"작전이 방금 개시되었습니다.\n";
+    cout << "8자리 비밀번호를 입력하십시오:________\b\b\b\b\b\b\b\b";
+    long code;
+    cin >> code;
+    cout << "\a입력하신 비밀번호는 " << code << "입니다.\n";
+    cout << "\a비밀번호가 맞습니다! Z3 계획을 진행하십시오!\n";
+    return 0;
+}
+``` 
