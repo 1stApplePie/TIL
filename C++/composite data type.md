@@ -242,3 +242,4 @@ cin.get(name, ArSize).get();        // 멤버 함수들을 결합한다.
 cin.getline(name1, ArSize).getline(name2, ArSize);
 ```
 두 행의 입력을 연속해서 읽어 name1과 name2 배열에 각각 저장한다. 이것은 cin.getline()을 두 번 호출하는 것과 같다.
+
