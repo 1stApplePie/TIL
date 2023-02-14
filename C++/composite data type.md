@@ -499,3 +499,191 @@ cin >> str;     // 한 단어를 읽어 string 객체 str안에 넣는다.
 cin >> s;       // 한 값을 읽어 C++ 기본 데이터형에 넣는다.
 ```
 istream 클래스의 멤버 함수를 사용한다. 그러나 그 앞의 string 클래스 코드는 string 클래스의 프렌드 함수를 사용한다. 프렌드 함수가 무엇이고, 이 테크닉이 어떻게 동작하는지는 추후에 공부하도록 하자.<br><br>
+
+# 구조체
+파이썬의 Dict 자료형처럼 모든 정보를 하나의 단위로 묶을 수 있는 데이터 형식이 C++에도 존재한다. 이는 구조체(structure)라고 하는데, 서로 관련된 정보를 하나의 단위로 묶어서 저장할 수 있다. 하나의 구조체 안에 여러 종류의 데이터를 저장할 수 있기 때문에 배열보다 융통성이 있다.<br>
+구조체는 사용자가 정의할 수 있는 데이터형이다. 데이터형의 특성을 정의하는 구조체 선언이 필요하다. 데이터형을 정의한 후에는 그 데이터형의 변수를 생성할 수 있다. 그러므로 구조체는 두 단계를 거쳐 생성된다. 첫 번째는 구조체 서술(structure description)을 정의하는 단계이다. 이 단계에서는 구조체 안에 저장할 여러 가지 데이터형들을 서술하고 이름을 정한다. 두 번째는 구조체 서술에 따라 구조체 변수(structure variable)를 생성하는 단계이다. 좀 더 일반적으로 말하면, 구조체 데이터 객체를 생성하는 단계이다.<br>
+예를 들어, 어떤 장난감 회사에서 생산하고 있는 모형풍선 제품들에 대한 정보를 나타낼 수 있는 데이터형을 원한다고 가정하자. 특별히 그 데이터형은 제품명, 부피, 가겨 등을 나타낼 수 있어야 한다. 다음은 이러한 요구를 만족시키는 구조체 서술이다.
+```
+struct inflatable   // 구조체 선언
+{
+    char name[20];
+    float volume;
+    double price;
+};
+```
+여기서 키워드 struct는 이 코드가 구조체 서술을 정의하고 있다는 것을 나타낸다. 태그라고도 보르는 식별자 inflatable은 새로 만들어지는 데이터형의 이름으로 사용된다. char형 변수나 int형 변수를 생성하듯이, 이제부터는 inflatable형의 변수를 생성할 수 있다. 중괄호 {}안에는 이 구조체를 구성하는 데이터형들의 리스트를 넣는다. 이 리스트에 나열되는 각 항목은 선언 구문이다. 이 리스트에는 배열이나 다른 구조체를 포함하여, C++가 제공하는 어떠한 데이터형도 넣을 수 있다. 이 리스트의 각 항목을 멤버(member)라고 부른다.
+그리고 예제의 마지막 부분을 보면 세미콜론을 사용하여 템플릿 선언을 끝내는 것을 볼 수 있다.<br>
+템플릿을 만든 다음에는 그 데이터형의 변수들을 생성할 수 있다.
+```
+inflatable hat;     // inflatable형의 구조체 변수
+inflatable woopie_cushion   // inflatable형의 구조체 변수
+inflatable mainframe    // inflatable형의 구조체 변수
+```
+C언어에서는 구조체 변수를 선언할 때 키워드 struct를 요구한다. 그러나 C++에서는 키워드 struct를 생략할 수 있다.
+```
+struct inflatable goose // C는 키워드 struct를 요구한다.
+inflatable vincent;     // C++는 키워드 struct를 요구하지 않는다.
+```
+C++에서는 구조체 태그를 기본 데이터형의 이름처럼 사용할 수 있다. 이러한 변화는 구조체 선언이 새로운 데이터형을 정의하는 것임을 강조하는 것이다. 또한 키워드 struct를 생략해도 에러가 발생하지 않는다.<br>
+hat가 inflatable형이라면, 멤버 연산자(.)를 사용하여 그 구조체의 개별적인 멤버에 접근할 수 있다. 예를 들어, hat.volume은 hat변수의 volume 멤버를 나타내고, hat.price는 hat변수의 price멤버를 나타낸다. 이와 마찬가지로 vincent.price는 vincent 변수의 price 멤버를 나타낸다. 쉽게 말해서, 배열 인덱스를 이용하여 배열 원소에 접근할 수 있듯이, 멤버 이름을 사용하여 구조체의 멤버에 접근할 수 있다. price 멤버는 double형으로 선언되었기 때문에, hat.price와 vincent.price는 둘 다 double형 변수와 모든 면에서 동등하다. 따라서 보통의 double형 변수처럼 사용할 수 있다. 정리하자면 hat은 구조체이고, hat.price는 double형 변수이다. 클래스 멤버 함수에 접근하는 cin.getline()과 같은 방법은 구조체 멤버 변수에 접근하는 vincent.price와 같은 방법에서 그 형식을 차용하였다.<br><br>
+## 프로그램에 구조체 사용하기
+지금까지 구조체의 주요 특징을 알아보았으므로, 구조체를 사용하는 프로그램 안에 그 아이디어를 구현해 볼 차례이다. Listing 4.11은 구조체의 이러한 요점들에 대해 설명한다. 또한 구조체를 초기화하는 방법도 설명한다.
+```
+// Listing 4.11
+// structur.cpp
+#include <iostream>
+struct inflatable
+{
+    char name[20];
+    float volume;
+    double price;
+};
+
+int main()
+{
+    using namespace std;
+    inflatable guest = 
+    {
+        "Glorious Gloria",  // name 값
+        1.88,               // volume 값
+        29.99               // price 값
+    };                      // guest는 inflatable형의 구조체 변수이다.
+                            // 지정된 값으로 초기화된다.
+    inflatable pal = 
+    {
+        "Audacious Arthur",
+        3.12,
+        32.99
+    };                      // pal은 inflatable형의 두 번째 변수이다.
+    // 참고: 어떤 C++ 시스템에서는 다음과 같은 형식을 요구한다.
+    // static inflatable guest = 
+
+    cout << "지금 판매하고 있는 모형 풍선은\n" << guest.name;
+    cout << "와 " << pal.name << "입니다.\n";
+    // pal.name은 pal 변수의 name 멤버이다.
+    cout << "두 제품을 $";
+    cout << guest.price + pal.price << "에 드리겠습니다!\n";
+    return 0;
+}
+```
+## 프로그램 분석
+Listing 4.11 프로그램과 관련하여 한 가지 중요한 것은 구조체 선언을 두는 위치이다. structur.cpp에서는 두 가지 방법을 사용할 수 있다. 첫 번째 방법은 main() 함수의 안에 여는 중괄호 바로 뒤에 선언을 두는 것이다. 두 번째 방법은 이 예제처럼 main()함수의 앞에 선언을 두는 것이다. 함수의 밖에 선언을 두는 것을 외부 선언(external declaration)이라 한다. 이 예제에서는 선언이 함수의 안에 있든 밖에 있든 차이가 없다. 그러나 여러 개의 함수로 이루어지는 프로그램에서는 커다란 차이가 날 수 있다. 즉, 외부 선언은 이후에 나오는 모든 함수들이 사용할 수 있으나, 내부 선언은 그 선언이 들어 있는 함수에서만 사용할 수 있다. 일반적으로 프로그래머들은 모든 함수들이 구조체를 사용할 수 있도록 구조체를 외부적으로 선언하고 있다.<br>
+또한 변수도 내부적으로 또는 외부적으로 선언할 수 있다. 외부 변수는 여러 함수들이 공유할 수 있다. C++의 일반적인 관행은 외부 변수의 사용은 가급적 금지하고 외부 구조체 선언은 장려한다. 그것은 기호 상수를 외부적으로 선언하는 것과도 일맥상통한다.<br><br>
+이제 초기화 과정을 살펴보자
+```
+inflatable guest = 
+{
+        "Glorious Gloria",  // name 값
+        1.88,               // volume 값
+        29.99               // price 값
+    };
+```
+배열과 마찬가지로, 한 쌍의 중괄호 {} 안에 초기화 값들이 콤마로 구분되는 초기화 리스트를 넣는다. 이 예제 프로그램에서는 한 행에 하나의 값을 나타냈지만, 모든 값들을 한 행에 나타낼 수도 있다. 그러나 초기화 값들을 콤마로 구분해야한다.
+```
+inflatable duck = {"Daphne", 0.12, 9.98};
+```
+구조체의 각 멤버는 자신의 데이터형에 맞는 값으로 초기화할 수 있다. 예를 들어, name 멤버는 char형의 배열이므로, 문자열로 초기화할 수 있다.<br>
+구조체의 각 멤버는 그 데이터형의 변수처럼 취급된다. 그래서 pal.price은 char형의 배열이므로, cout을 사용하여 pal.name을 출력하면 문자열로 출력된다. 또한 인덱스를 사용하여 pal.name 배열 내의 각 문자들에 접근할 수 있다.즉, pal.name[0]은 문자 A이다. pal은 배열이 아니라 구조체이기 때문에 pal[0]은 아무런 의미가 없다.<br><br>
+## 구조체의 기타 특성
+C++에서는 사용자가 정의한 데이터형을 내장 데이터형과 동일한 방식으로 다룰 수 있다. 예를 들어, 구조체를 함수에 매개변수로 전달할 수 있으며, 구조체를 리턴값으로 사용할 수도 있다 대입 연산자(=)를 사용하여 하나의 구조체를 같은 데이터형의 다른 구조체에 대입할 수 있다. 이때에는 한 구조체의 멤버 값들이 상대방 구조체의 해당 멤버에 각각 대입된다. 이때 배열도 대입되는 하나의 멤버가 될 수 있다. 이와 같이 멤버 단위로 대입되는 것을 멤버별 대입(memberwise assignment)이라 한다.
+```
+// Listing 4.12
+// assgn_st.cpp
+#include <iostream>
+struce inflatable
+{
+    char name[20];
+    float volume;
+    double price;
+};
+int main()
+{
+    using namespace std;
+    inflatable bouquet = 
+    {
+        "sunflowers",
+        0.20,
+        12.49
+    };
+    inflatable choice;
+    cout << "bouquet: " << bouquet.name << " for $";
+    cout << bouquet.price << endl;
+    
+    choice = bouquet;
+    cout << "choice: " << choice.name << " for $";
+    cout << choice.price << endl;
+    return 0;
+}
+```
+실행 결과에서 볼 수 있듯이, 멤버별 대입을 통하여 bouquet 구조체의 멤버 값들이 choice 구조체의 멤버들에 각각 대입되었다. 구조체 템플릿의 정의와 구조체 변수의 생성을 하나로 결합할 수 있다. 그렇게 하려면 다음과 같이 중괄호 뒤에 변수 이름을 둔다.
+```
+struct perks
+{
+    int key_number;
+    char car[12];
+} mr_smith, ms_jones;
+```
+이러한 방식으로 변수를 생성할 때 초기화도 함께 처리할 수 있다.
+```
+struct perks
+{
+    int key_number;
+    char car[12];
+} mr_glitz =
+{
+    7, "Packard"
+};
+```
+그러나 구조체 템플릿의 정의와 구조체 변수의 선언을 분리해 놓는 것이 프로그램을 더 이해하기 쉽게 만든다.<br>
+데이터형 이름이 없는 구조체를 생성할 수도 있다. 이것은 태그 이름을 생략하고 템플릿과 변수를 동시에 생성하는 것이다.
+```
+struct          // 태그가 없다
+{
+    int x;      // 두 개의 멤버
+    int y;
+} position;     // 구조체 변수
+```
+이것은 position이라는 구조체 변수를 생성한다. position.x와 같이 멤버 연산자를 사용하여 멤버에 접근할 수는 있지만, 데이터형 이름이 없기 때문에 이후에 같은 형의 다른 변수를 생성할 수 없다.<br><br>
+## 구조체의 배열
+inflatable 구조체는 배열(name 배열)을 멤버로 포함하고 있다. 또한 원소가 구조체인 배열을 생성할 수도 있다. 구조체의 배열을 만드는 방법은 기본 데이터형의 배열을 만드는 것과 같다. 예를 들어, inflatable형 구조체 100개를 원소로 가지는 배열을 생성하려면 다음과 같이 정의할 수 있다.
+```
+inflatable gifts[100];      // inflatable형 구조체 100개의 배열
+```
+이것은 gifts를 inflatable형의 배열로 만든다. 따라서 gifts[0] 또는 gifts[99]와 같은 배열 원소는 inflatable형 객체이다. 따라서 다음과 같이 멤버 연산자를 사용할 수 있다.
+```
+cin >> gifts[0].volume;         // 첫 번째 구조체의 volume 멤버에 입력
+cout << gifts[99].price << endl; // 마지막 구조체의 price 멤버를 출력
+```
+gifts 자체는 구조체가 아니라 배열이므로, gifts.price와 같은 표현은 아무런 의미가 없다.<br>
+다음은 구조체의 배열을 초기화하는 방법이다.
+```
+inflatable guests[2] =
+{
+    {"Bambi", 0.5, 21.99},      // 첫 번째 배열 원소인 구조체
+    {"Godzilla", 2000, 565.99}  // 두 번째 배열 원소인 구조체
+}
+```
+Listing 4.13은 구조체의 배열을 사용하는 간단한 예제를 설명한다. guset가 inflatable형의 배열이고, guest[0]이 inflatable형이기 때문에, inflatable 구조체의 멤버에 접근하기 위해 도트 연산자와 함께 그것을 사용할 수 있다.
+```
+// Listing 4.13
+// arrstruc.cpp
+#include <iostream>
+struct inflatable
+{
+    char name[20];
+    float volume;
+    double price;
+};
+int main()
+{
+    using namespace std;
+    inflatable guests[2] =
+    {
+        {"Bambi", 0.5, 21.99},
+        {"Godzilla", 2000, 565.99}
+    };
+    cout << guests[0].name << "와 " << guests[1].name << "의 부피를 합하면\n"
+    << guests[0].volume + guests[1].volume << " 세제곱피트 입니다.\n";
+    return 0;
+}
