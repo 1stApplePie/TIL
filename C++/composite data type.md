@@ -687,3 +687,4 @@ int main()
     << guests[0].volume + guests[1].volume << " 세제곱피트 입니다.\n";
     return 0;
 }
+
